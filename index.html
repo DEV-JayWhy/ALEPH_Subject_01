@@ -46,7 +46,7 @@
 
     /* Header */
     header {
-      min-height: 90vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       border-bottom: 1px solid #ddd;
@@ -97,6 +97,50 @@
       background: #171717;
       color: white;
       border-color: #171717;
+    }
+
+    /* Hero Summary / Table of Contents */
+    .hero-summary {
+      margin-top: 45px;
+      padding-top: 25px;
+      border-top: 1px solid #ddd;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .hero-summary a {
+      display: block;
+      padding: 18px;
+      background: white;
+      border: 1px solid #e2e2e2;
+      transition: 0.2s;
+    }
+
+    .hero-summary a:hover {
+      transform: translateY(-2px);
+      border-color: #171717;
+    }
+
+    .hero-summary-number {
+      display: block;
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .hero-summary-title {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .hero-summary-text {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     /* Sections */
@@ -301,6 +345,10 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-summary {
+        grid-template-columns: 1fr;
+      }
+
       .experience-item {
         grid-template-columns: 1fr;
         gap: 5px;
@@ -337,7 +385,7 @@
 
       <div class="links">
         <!-- 아래 링크를 본인의 주소로 수정하세요 -->
-        <a href="https://github.com/DEV-JayWhy/ALEPH_Subject_01.git" target="_blank" rel="noopener">
+        <a href="https://github.com/DEV-JayWhy/ALEPH_Subject_01.git">
           GitHub ↗
         </a>
 
@@ -347,6 +395,26 @@
 
         <a href="https://app.notion.com/p/272e5a96e3ce80d390c1cf63b52eeb14?source=copy_link" target="_blank" rel="noopener">
           notion ↗
+        </a>
+      </div>
+
+      <div class="hero-summary">
+        <a href="#about">
+          <span class="hero-summary-number">01 / ABOUT</span>
+          <span class="hero-summary-title">소개</span>
+          <span class="hero-summary-text">새로운 것을 배우고 직접 만들어보는 사람</span>
+        </a>
+
+        <a href="#like">
+          <span class="hero-summary-number">02 / I LIKE</span>
+          <span class="hero-summary-title">활동</span>
+          <span class="hero-summary-text">개발 · 네트워크 공부 · 게임 · 음악 · 독서</span>
+        </a>
+
+        <a href="#experience">
+          <span class="hero-summary-number">03 / EXPERIENCE</span>
+          <span class="hero-summary-title">근거</span>
+          <span class="hero-summary-text">관제 시스템 · 웹 개발 · 금융기관 웹 개발 경험</span>
         </a>
       </div>
 
@@ -397,7 +465,7 @@
     <!-- =========================
          I LIKE
     ========================== -->
-    <section>
+    <section id="like">
       <div class="container">
 
         <div class="section-label">02 / I LIKE</div>
@@ -439,7 +507,7 @@
     <!-- =========================
          EXPERIENCE
     ========================== -->
-    <section>
+    <section id="experience">
       <div class="container">
 
         <div class="section-label">03 / EXPERIENCE</div>
@@ -639,4 +707,3 @@
 
 </body>
 </html>
-```
