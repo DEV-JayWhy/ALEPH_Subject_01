@@ -327,6 +327,69 @@
       font-size: 13px;
     }
 
+    /* Card 5 Interaction */
+    .keywords {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .keyword {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .keyword-extra[hidden],
+    .tech-extra[hidden] {
+      display: none;
+    }
+
+    .more-button {
+      appearance: none;
+      border: 1px solid #ccc;
+      background: white;
+      color: #171717;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .more-button:hover,
+    .more-button:focus-visible {
+      background: #171717;
+      color: white;
+      border-color: #171717;
+      outline: none;
+    }
+
+    .tech-stack {
+      margin-top: 8px;
+    }
+
+    .tech-items {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .tech-item {
+      display: inline-block;
+      padding: 5px 9px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      background: white;
+      font-size: 13px;
+      color: #444;
+    }
+    
     /* Mobile */
     @media (max-width: 700px) {
       .container {
@@ -449,13 +512,20 @@
           </p>
         </div>
 
-        <div class="keywords">
-          <span class="keyword">#배우기</span>
-          <span class="keyword">#만들기</span>
-          <span class="keyword">#기록하기</span>
+        <div class="keywords" aria-label="소개 키워드">
           <span class="keyword">#개발</span>
           <span class="keyword">#네트워크</span>
           <span class="keyword">#새로운경험</span>
+
+          <span class="keyword-extra" id="keyword-more" hidden>
+            <span class="keyword">#배우기</span>
+            <span class="keyword">#만들기</span>
+            <span class="keyword">#기록하기</span>
+          </span>
+
+          <button class="more-button" type="button" aria-expanded="false" aria-controls="keyword-more" id="keyword-toggle">
+            더보기
+          </button>
         </div>
 
       </div>
@@ -535,9 +605,18 @@
                 대구 시설공단의 장애인 콜택시 관제 시스템을 개발했습니다.
               </p>
               
-              <div class="learned">
+              <div class="learned tech-stack">
                 <strong>기술 스택</strong>
-                기술스택 : JavaScript, JSP, JAVA, Angular, MariaDB
+                <div class="tech-items" aria-label="에쎄텔 기술 스택">
+                  <span class="tech-item">JavaScript</span>
+                  <span class="tech-item">JSP</span>
+                  <span class="tech-item">JAVA</span>
+                  <span class="tech-extra" id="tech-more-1" hidden>
+                    <span class="tech-item">Angular</span>
+                    <span class="tech-item">MariaDB</span>
+                  </span>
+                  <button class="more-button" type="button" aria-expanded="false" aria-controls="tech-more-1" id="tech-toggle-1">더보기</button>
+                </div>
               </div>
               <br>
               <div class="learned">
@@ -568,10 +647,20 @@
                 자사 내에서 쓰는 쇼핑몰과 회원들의 전용 앱 페이지를 개발 했습니다.
               </p>
               
-              <div class="learned">
+              <div class="learned tech-stack">
                 <strong>기술 스택</strong>
-                기술스택 : JavaScript, JSP, JAVA, Vue, MySQL
+                <div class="tech-items" aria-label="휴노테크 기술 스택">
+                  <span class="tech-item">Vue</span>
+                  <span class="tech-item">JavaScript</span>
+                  <span class="tech-item">JAVA</span>
+                  <span class="tech-extra" id="tech-more-2" hidden>
+                    <span class="tech-item">JSP</span>
+                    <span class="tech-item">MySQL</span>
+                  </span>
+                  <button class="more-button" type="button" aria-expanded="false" aria-controls="tech-more-2" id="tech-toggle-2">더보기</button>
+                </div>
               </div>
+              
               <br>
               <div class="learned">
                 <strong>배운 것</strong>
@@ -704,6 +793,23 @@
       <p>© 2026 박준영. Built with HTML & CSS.</p>
     </div>
   </footer>
+  <script>
+    function setupMoreButton(buttonId, contentId) {
+      const button = document.getElementById(buttonId);
+      const content = document.getElementById(contentId);
 
+      button.addEventListener("click", () => {
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!isOpen));
+        content.hidden = isOpen;
+        button.textContent = isOpen ? "더보기" : "접기";
+      });
+    }
+
+    setupMoreButton("keyword-toggle", "keyword-more");
+    setupMoreButton("tech-toggle-1", "tech-more-1");
+    setupMoreButton("tech-toggle-2", "tech-more-2");
+
+  </script>
 </body>
 </html>
